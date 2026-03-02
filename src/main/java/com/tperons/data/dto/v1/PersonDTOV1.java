@@ -1,8 +1,8 @@
-package com.tperons.data.dto;
+package com.tperons.data.dto.v1;
 
 import java.io.Serializable;
 
-public class PersonDTO implements Serializable {
+public class PersonDTOV1 implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -12,10 +12,10 @@ public class PersonDTO implements Serializable {
     private String address;
     private String gender;
 
-    public PersonDTO() {
+    public PersonDTOV1() {
     }
 
-    public PersonDTO(Long id, String firstName, String lastName, String address, String gender) {
+    public PersonDTOV1(Long id, String firstName, String lastName, String address, String gender) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -79,7 +79,7 @@ public class PersonDTO implements Serializable {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        PersonDTO other = (PersonDTO) obj;
+        PersonDTOV1 other = (PersonDTOV1) obj;
         if (id == null) {
             if (other.id != null)
                 return false;

@@ -16,7 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import com.tperons.data.dto.PersonDTO;
+import com.tperons.data.dto.v1.PersonDTOV1;
+import com.tperons.data.dto.v2.PersonDTOV2;
 import com.tperons.service.PersonService;
 
 @RestController
@@ -27,26 +28,33 @@ public class PersonController {
     private PersonService service;
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<PersonDTO>> findAll() {
-        List<PersonDTO> list = service.findAll();
+    public ResponseEntity<List<PersonDTOV1>> findAll() {
+        List<PersonDTOV1> list = service.findAll();
         return ResponseEntity.ok().body(list);
     }
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<PersonDTO> findById(@PathVariable("id") Long id) {
-        PersonDTO obj = service.findById(id);
+    public ResponseEntity<PersonDTOV1> findById(@PathVariable("id") Long id) {
+        PersonDTOV1 obj = service.findById(id);
         return ResponseEntity.ok().body(obj);
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<PersonDTO> create(@RequestBody PersonDTO obj) {
+    public ResponseEntity<PersonDTOV1> create(@RequestBody PersonDTOV1 obj) {
         obj = service.create(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).body(obj);
     }
 
+    @PostMapping(value = "/v2", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<PersonDTOV2> create(@RequestBody PersonDTOV2 obj) {
+        obj = service.createV2(obj);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
+        return ResponseEntity.created(uri).body(obj);
+    }
+
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<PersonDTO> update(@PathVariable("id") Long id, @RequestBody PersonDTO obj) {
+    public ResponseEntity<PersonDTOV1> update(@PathVariable("id") Long id, @RequestBody PersonDTOV1 obj) {
         obj = service.update(id, obj);
         return ResponseEntity.ok().body(obj);
     }
