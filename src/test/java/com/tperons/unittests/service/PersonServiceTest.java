@@ -1,4 +1,4 @@
-package com.tperons.service;
+package com.tperons.unittests.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -28,6 +28,7 @@ import com.tperons.data.dto.PersonDTO;
 import com.tperons.entity.Person;
 import com.tperons.exception.RequiredObjectIsNullException;
 import com.tperons.repository.PersonRepository;
+import com.tperons.service.PersonService;
 import com.tperons.unittests.mapper.mocks.MockPerson;
 
 @TestInstance(Lifecycle.PER_CLASS)
