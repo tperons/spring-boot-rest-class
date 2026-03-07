@@ -48,6 +48,14 @@ public class PersonService {
         return dto;
     }
 
+    public Page<PersonDTO> findByName(String firstName, Pageable pageable) {
+        logger.info("Finding People by First Name!");
+        Page<Person> personPage = repository.findByName(firstName, pageable);
+        Page<PersonDTO> dtoPage = personPage.map(p -> mapper.toDTO(p));
+        dtoPage.forEach(p -> addHateoasLinks(p));
+        return dtoPage;
+    }
+
     public PersonDTO create(PersonDTO obj) {
         if (obj == null)
             throw new RequiredObjectIsNullException();
