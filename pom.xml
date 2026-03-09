@@ -17,25 +17,46 @@
 		<java.version>25</java.version>
         <springdoc.version>3.0.2</springdoc.version>
         <mapstruct.version>1.6.3</mapstruct.version>
+        <apache.poi.version>5.5.1</apache.poi.version>
+        <common.csv.version>1.14.1</common.csv.version>
 	</properties>
 
 	<dependencies>
 
 	    <dependency>
+	        <groupId>org.apache.poi</groupId>
+	        <artifactId>poi-ooxml</artifactId>
+	        <version>${apache.poi.version}</version>
+            <scope>compile</scope>
+	    </dependency>
+
+
+	    <dependency>
+	        <groupId>org.apache.commons</groupId>
+	        <artifactId>commons-csv</artifactId>
+	        <version>${common.csv.version}</version>
+            <scope>compile</scope>
+	    </dependency>
+
+
+	    <dependency>
 	        <groupId>org.mapstruct</groupId>
 	        <artifactId>mapstruct</artifactId>
 	        <version>${mapstruct.version}</version>
+            <scope>compile</scope>
 	    </dependency>
 
 
 	    <dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-webmvc</artifactId>
+            <scope>compile</scope>
 		</dependency>
 
         <dependency>
 	        <groupId>org.springframework.boot</groupId>
 	        <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <scope>compile</scope>
 	    </dependency>
 
         <dependency>
@@ -86,12 +107,6 @@
 			<artifactId>spring-boot-starter-webmvc-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <scope>test</scope>
-        </dependency>
 
         <dependency>
             <groupId>org.testcontainers</groupId>

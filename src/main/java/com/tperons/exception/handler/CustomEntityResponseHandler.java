@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+import com.tperons.exception.BadRequestException;
 import com.tperons.exception.ExceptionResponse;
 import com.tperons.exception.FileNotFoundException;
 import com.tperons.exception.FileStorageException;
@@ -26,6 +27,7 @@ public class CustomEntityResponseHandler extends ResponseEntityExceptionHandler 
         return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 
     }
+
     @ExceptionHandler(ResourceNotFoundException.class)
     public final ResponseEntity<ExceptionResponse> handleNotFoundExceptions(Exception e, WebRequest request) {
         ExceptionResponse response = new ExceptionResponse(new Date(), e.getMessage(), request.getDescription(false));
@@ -33,12 +35,12 @@ public class CustomEntityResponseHandler extends ResponseEntityExceptionHandler 
     }
 
     @ExceptionHandler(RequiredObjectIsNullException.class)
-    public final ResponseEntity<ExceptionResponse> handleBadRequestExceptions(Exception e, WebRequest request) {
+    public final ResponseEntity<ExceptionResponse> handleRequiredObjectExceptions(Exception e, WebRequest request) {
         ExceptionResponse response = new ExceptionResponse(new Date(), e.getMessage(), request.getDescription(false));
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 
-     @ExceptionHandler(FileStorageException.class)
+    @ExceptionHandler(FileStorageException.class)
     public final ResponseEntity<ExceptionResponse> handleFileStorageException(Exception e, WebRequest request) {
         ExceptionResponse response = new ExceptionResponse(new Date(), e.getMessage(), request.getDescription(false));
         return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -48,6 +50,12 @@ public class CustomEntityResponseHandler extends ResponseEntityExceptionHandler 
     public final ResponseEntity<ExceptionResponse> handleFileNotFoundException(Exception e, WebRequest request) {
         ExceptionResponse response = new ExceptionResponse(new Date(), e.getMessage(), request.getDescription(false));
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(BadRequestException.class)
+    public final ResponseEntity<ExceptionResponse> handleBadRequestExceptions(Exception e, WebRequest request) {
+        ExceptionResponse response = new ExceptionResponse(new Date(), e.getMessage(), request.getDescription(false));
+        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
     }
 
 }
