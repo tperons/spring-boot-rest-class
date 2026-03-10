@@ -73,12 +73,17 @@ public class PersonService {
         return dtoPage;
     }
 
-    public Resource exportPage(Pageable pageable, String acceptHeader) throws Exception {
+    public Resource exportPage(Pageable pageable, String acceptHeader) {
         logger.info("Finding all People!");
         Page<Person> personPage = repository.findAll(pageable);
         List<PersonDTO> dtoList = personPage.getContent().stream().map(p -> mapper.toDTO(p)).toList();
-        FileExporter exporter = exporterFactory.getExporter(acceptHeader);
-        return exporter.exportFile(dtoList);
+        try {
+            FileExporter exporter = exporterFactory.getExporter(acceptHeader);
+            return exporter.exportFile(dtoList);
+        } catch (Exception e) {
+            logger.error("Error on file export");
+            throw new RuntimeException("File generate error.");
+        }
     }
 
     public PersonDTO create(PersonDTO obj) {
@@ -145,17 +150,13 @@ public class PersonService {
     }
 
     private static void addHateoasLinks(PersonDTO dto) {
-        dto.add(linkTo(methodOn(PersonController.class).findAll(null, null, null, null)).withRel("findAll")
-                .withType("GET"));
+        dto.add(linkTo(methodOn(PersonController.class).findAll(null, null, null, null)).withRel("findAll").withType("GET"));
         dto.add(linkTo(methodOn(PersonController.class).findById(dto.getId())).withSelfRel().withType("GET"));
-        dto.add(linkTo(methodOn(PersonController.class).findByName(null, null, null, null, null)).withRel("findByName")
-                .withType("GET"));
+        dto.add(linkTo(methodOn(PersonController.class).findByName(null, null, null, null, null)).withRel("findByName").withType("GET"));
         dto.add(linkTo(methodOn(PersonController.class).create(dto)).withRel("create").withType("POST"));
-        dto.add(linkTo(methodOn(PersonController.class)).slash("massCreation").withRel("massCreation")
-                .withType("POST"));
+        dto.add(linkTo(methodOn(PersonController.class)).slash("massCreation").withRel("massCreation").withType("POST"));
         dto.add(linkTo(methodOn(PersonController.class).update(dto.getId(), dto)).withRel("update").withType("PUT"));
-        dto.add(linkTo(methodOn(PersonController.class).disablePerson(dto.getId())).withRel("disable")
-                .withType("PATCH"));
+        dto.add(linkTo(methodOn(PersonController.class).disablePerson(dto.getId())).withRel("disable").withType("PATCH"));
         dto.add(linkTo(methodOn(PersonController.class).delete(dto.getId())).withRel("delete").withType("DELETE"));
     }
 

@@ -14,10 +14,13 @@ import jakarta.servlet.http.HttpServletRequest;
 @Tag(name = "File")
 public interface FileControllerDocs {
 
+    // TODO: Implementar
     UploadFileResponseDTO uploadFile(MultipartFile file);
 
+    // TODO: Implementar
     List<UploadFileResponseDTO> uploadMultipleFile(MultipartFile[] files);
 
+    // TODO: Implementar
     ResponseEntity<Resource> downloadFile(String fileName, HttpServletRequest request);
 
 }

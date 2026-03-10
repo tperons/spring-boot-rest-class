@@ -26,4 +26,6 @@ logging:
 springdoc:
   paths-to-match: /api/v1/**/**
   swagger-ui:
+    operations-sorter: method
+    tags-sorter: alpha
     use-root-path: true

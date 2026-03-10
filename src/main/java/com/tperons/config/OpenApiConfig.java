@@ -13,8 +13,8 @@ public class OpenApiConfig {
     @Bean
     OpenAPI customOpenAPI() {
         return new OpenAPI().info(
-                new Info().title("REST API RESTful from 0 with Java, Spring Boot, Docker and Kubernets").version("v1")
-                        .description("REST API RESTful from 0 with Java, Spring Boot, Docker and Kubernets")
+                new Info().title("RESTful API with Java, Spring Boot, Docker, and Kubernetes").version("v1")
+                        .description("A fully featured RESTful API built from scratch using Java and Spring Boot. This project showcases clean architecture, advanced exception handling, pagination, file export capabilities, and modern deployment strategies using Docker and Kubernetes.")
                         .license(new License().name("MIT").url("https://github.com/tperons")));
     }
 

@@ -21,11 +21,13 @@ public class FileExporterFactory {
     private ApplicationContext context;
 
     public FileExporter getExporter(String acceptHeader) throws Exception {
+        logger.info("Determining file exporter for Accept header: {}", acceptHeader);
         if (acceptHeader.equalsIgnoreCase(MediaTypes.APPLICATION_XLSX_VALUE)) {
             return context.getBean(XlsxExporter.class);
         } else if (acceptHeader.equalsIgnoreCase(MediaTypes.APPLICATION_CSV_VALUE)) {
             return context.getBean(CsvExporter.class);
         } else {
+            logger.error("Failed to determine exporter. Unsupported media type: {}", acceptHeader);
             throw new BadRequestException("Invalid file format!");
         }
     }

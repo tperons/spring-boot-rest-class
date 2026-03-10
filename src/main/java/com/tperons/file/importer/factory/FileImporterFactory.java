@@ -20,11 +20,13 @@ public class FileImporterFactory {
     private ApplicationContext context;
 
     public FileImporter getImporter(String fileName) throws Exception {
+        logger.info("Determining file importer for file: {}", fileName);
         if (fileName.endsWith(".xlsx")) {
             return context.getBean(XlsxImporter.class);
         } else if (fileName.endsWith(".csv")) {
             return context.getBean(CsvImporter.class);
         } else {
+            logger.error("Failed to determine importer. Unsupported file extension for: {}", fileName);
             throw new BadRequestException("Invalid file format!");
         }
     }
