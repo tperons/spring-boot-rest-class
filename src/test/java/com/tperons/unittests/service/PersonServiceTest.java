@@ -26,7 +26,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import com.tperons.data.dto.PersonDTO;
+import com.tperons.dto.PersonDTO;
 import com.tperons.entity.Person;
 import com.tperons.exception.RequiredObjectIsNullException;
 import com.tperons.mapper.PersonMapper;

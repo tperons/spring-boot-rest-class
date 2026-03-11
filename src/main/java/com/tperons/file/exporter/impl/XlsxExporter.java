@@ -15,7 +15,7 @@ import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
 
-import com.tperons.data.dto.PersonDTO;
+import com.tperons.dto.PersonDTO;
 import com.tperons.file.exporter.contract.FileExporter;
 
 @Component

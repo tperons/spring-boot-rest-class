@@ -21,7 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.tperons.controller.docs.FileControllerDocs;
-import com.tperons.data.dto.UploadFileResponseDTO;
+import com.tperons.dto.UploadFileResponseDTO;
 import com.tperons.service.FileStorageService;
 
 import jakarta.servlet.http.HttpServletRequest;

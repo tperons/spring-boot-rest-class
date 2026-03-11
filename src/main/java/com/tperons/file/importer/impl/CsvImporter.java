@@ -9,7 +9,7 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import org.springframework.stereotype.Component;
 
-import com.tperons.data.dto.PersonDTO;
+import com.tperons.dto.PersonDTO;
 import com.tperons.file.importer.contract.FileImporter;
 
 @Component

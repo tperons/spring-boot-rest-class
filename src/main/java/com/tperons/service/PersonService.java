@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.tperons.controller.PersonController;
-import com.tperons.data.dto.PersonDTO;
+import com.tperons.dto.PersonDTO;
 import com.tperons.entity.Person;
 import com.tperons.exception.BadRequestException;
 import com.tperons.exception.RequiredObjectIsNullException;

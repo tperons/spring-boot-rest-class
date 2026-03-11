@@ -10,7 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.tperons.data.dto.PersonDTO;
+import com.tperons.dto.PersonDTO;
 import com.tperons.file.exporter.MediaTypes;
 
 import io.swagger.v3.oas.annotations.Operation;

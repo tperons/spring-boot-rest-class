@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.core.io.Resource;
 
-import com.tperons.data.dto.PersonDTO;
+import com.tperons.dto.PersonDTO;
 
 public interface FileExporter {
 

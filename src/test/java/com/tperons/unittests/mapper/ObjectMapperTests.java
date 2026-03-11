@@ -6,7 +6,7 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.tperons.data.dto.PersonDTO;
+import com.tperons.dto.PersonDTO;
 import com.tperons.entity.Person;
 import com.tperons.mapper.PersonMapper;
 import com.tperons.unittests.mapper.mocks.MockPerson;

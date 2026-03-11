@@ -1,4 +1,4 @@
-package com.tperons.data.dto;
+package com.tperons.dto;
 
 import java.io.Serializable;
 

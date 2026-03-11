@@ -29,7 +29,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.tperons.controller.docs.PersonControllerDocs;
-import com.tperons.data.dto.PersonDTO;
+import com.tperons.dto.PersonDTO;
 import com.tperons.file.exporter.MediaTypes;
 import com.tperons.service.PersonService;
 

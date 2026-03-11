@@ -3,7 +3,7 @@ package com.tperons.file.importer.contract;
 import java.io.InputStream;
 import java.util.List;
 
-import com.tperons.data.dto.PersonDTO;
+import com.tperons.dto.PersonDTO;
 
 public interface FileImporter {
 

@@ -3,7 +3,7 @@ package com.tperons.unittests.mapper.mocks;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.tperons.data.dto.PersonDTO;
+import com.tperons.dto.PersonDTO;
 import com.tperons.entity.Person;
 
 public class MockPerson {
